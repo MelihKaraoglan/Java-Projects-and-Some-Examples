@@ -1,0 +1,37 @@
+class Solution {
+public static int solve(int a, int b) {
+int counter = 0;
+
+    for (int i = a; i < b; i++) {
+        int temp = i;
+        int c8 = 0, c5 = 0, c3 = 0;
+        boolean control = true;
+
+        while (temp > 0 && control==true) {
+            int digit = temp % 10;
+            if (digit == 8) {
+                c8++;
+            } else if (digit == 5) {
+                c5++;
+            } else if (digit == 3) {
+                c3++;
+            } else {
+                control = false;
+                break;
+            }
+            temp /= 10;
+        }
+
+        if (control && c8 >= c5 && c8 >= c3 && c5 >= c3) {
+            counter++;
+        }
+    }
+
+    return counter;
+}
+
+public static void main(String[] args) {
+    int result = solve(0, 1000);
+    System.out.println(result);
+} 
+}
